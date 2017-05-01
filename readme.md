@@ -23,7 +23,7 @@ file an issue for your favorite language
 
 ### Examples
 
-```
+```html
 <html>
   <head>
   </head>
@@ -41,7 +41,7 @@ var app = Elm.Main.fullscreen();
 </html>
 ```
 
-```
+```html
 <html>
   <head>
   </head>
