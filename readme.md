@@ -12,7 +12,9 @@ open localhost:3000
 ### Features
 * start coding without any config
 * live reload
+* show compile errors inside browser
 * ```wapper``` put all unnecessary stuff in ```.stuff``` in the current directory
+* open multiple ```wapper``` by providing different ```--port``` option
 
 
 ### Supported file types:
@@ -52,4 +54,11 @@ var app = Elm.Main.fullscreen();
     </script>
   </body>
 </html>
+```
+
+### CLI
+```
+--input  set input file or directory 
+--port   set port
+elm      run elm commands within .stuff directory
 ```
