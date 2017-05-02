@@ -34,7 +34,7 @@ file an issue for your favorite language
 import Html exposing (text)
 
 main =
-  text "test yeh"
+  text "hello world"
     </script>
     <script>
 var app = Elm.Main.fullscreen();
