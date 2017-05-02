@@ -43,17 +43,7 @@ if (!fs.existsSync(indexFileLoc)){
   process.exit();
 }
 
-let stuffLoc = indexParentLoc + "/.stuff";
-if (!fs.existsSync(stuffLoc)){
-  fs.mkdirSync(stuffLoc);
-}
-process.chdir(stuffLoc);
-
-if( ["elm"].includes(opts._[0]) ){
-  execSync(commandString,{stdio:"inherit"});
-  process.exit();
-}
-var watcher = chokidar.watch(indexParentLoc,{ ignored: /(^|[\/\\])\./ })
+var watcher = chokidar.watch(indexParentLoc,{ ignored: [/(^|[\/\\])\./, /elm-stuff$/, /node_modules$/] })
 var lastmtime = null;
 watcher.on("ready", ()=> {
   //console.log(chalk.green(`open http://localhost:${ opts.port }`));

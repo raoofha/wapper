@@ -13,11 +13,10 @@ open localhost:3000
 * start coding without any config
 * live reload
 * show compile errors inside browser
-* ```wapper``` put all unnecessary stuff in ```.stuff``` in the current directory
 * open multiple ```wapper``` by providing different ```--port``` option
 
 
-### Supported file types:
+### Supported filetypes
 * elm
 
 file an issue for your favorite language
