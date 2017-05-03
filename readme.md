@@ -26,8 +26,6 @@ file an issue for your favorite language
 
 ```html
 <html>
-  <head>
-  </head>
   <body>
     <script type="elm">
 import Html exposing (text)
@@ -44,8 +42,6 @@ var app = Elm.Main.fullscreen();
 
 ```html
 <html>
-  <head>
-  </head>
   <body>
     <script src="Main.elm"></script>
     <script>
@@ -59,5 +55,4 @@ var app = Elm.Main.fullscreen();
 ```
 --input  set input file or directory 
 --port   set port
-elm      run elm commands within .stuff directory
 ```
