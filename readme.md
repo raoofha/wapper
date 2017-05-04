@@ -1,4 +1,4 @@
-# wapper : develop without clutter
+# wapper : develop with no/less config
 
 ```
 npm i -g wapper
