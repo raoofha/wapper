@@ -1,6 +1,6 @@
 {
   "name": "wapper",
-  "version": "0.2.0-2",
+  "version": "0.2.1",
   "description": "develop without clutter",
   "bin": {
     "wapper": "wapper.js"
@@ -18,7 +18,6 @@
     "chokidar": "1.6.1",
     "express": "4.15.2",
     "jsdom": "10.0.0",
-    "tempy": "0.1.0",
     "tiny-lr": "1.0.4"
   }
 }

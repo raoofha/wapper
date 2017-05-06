@@ -1,13 +1,14 @@
-const tempy = require("tempy");
 const execSync = require('child_process').execSync;
 const fs = require("fs");
 
+const od = ".stuff"
+const o = `${od}/out.js`
+if (!fs.existsSync(od)){fs.mkdirSync(od);}
 module.exports = (source,i)=> {
   if(!i){
-    i = tempy.file({extension:"elm"})
+    i = `${od}/in.elm`
     fs.writeFileSync(i,source);
   }
-  let o = tempy.file({extension:"js"})
   execSync(`elm-make --yes ${i} --output ${o}`)
   return fs.readFileSync(o,"utf8");
 }
