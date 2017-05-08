@@ -1,7 +1,7 @@
 const execSync = require('child_process').execSync;
 const fs = require("fs");
 
-const od = global.opts.output;
+const od = global.opts.stuff;
 const o = `${od}/out.js`;
 if (!fs.existsSync(od)){fs.mkdirSync(od);}
 module.exports = (source,i)=> {

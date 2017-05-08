@@ -13,7 +13,7 @@ var opts = require('minimist')(process.argv.slice(2),{
   default:{
     port : 3000,
     input : "index.html",
-    output : ".stuff",
+    stuff : ".stuff",
   }
 });
 
