@@ -1,6 +1,6 @@
 {
   "name": "wapper",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "develop without clutter",
   "bin": {
     "wapper": "wapper.js"
@@ -15,9 +15,9 @@
   "dependencies": {
     "body-parser": "1.17.1",
     "chalk": "1.1.3",
+    "cheerio": "0.22.0",
     "chokidar": "1.6.1",
     "express": "4.15.2",
-    "jsdom": "10.0.0",
     "tiny-lr": "1.0.4"
   }
 }

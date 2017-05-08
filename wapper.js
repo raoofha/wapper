@@ -1,6 +1,5 @@
 #! /usr/bin/env node
 var express = require("express");
-var { JSDOM } = require("jsdom");
 var fs = require("fs");
 var path = require("path");
 var chokidar = require('chokidar');
@@ -8,6 +7,7 @@ const chalk = require('chalk');
 const tinylr = require("tiny-lr");
 const bodyParser = require("body-parser");
 const execSync = require('child_process').execSync;
+const cheerio = require('cheerio')
 
 var opts = require('minimist')(process.argv.slice(2),{
   default:{
@@ -89,17 +89,18 @@ var compile = (type, loc, source)=>{
 }
 
 const buildClient = (dev = true)=>{
-  let d;
+  let $;
   try{
     if(!cached[indexFileLoc]){
       console.log("building ...");
-      if(fs.existsSync(indexFileLoc)){
-        let dom = new JSDOM(fs.readFileSync(indexFileLoc,"utf8"))
-        d = dom.window.document;
-      }else{
-        return console.error("Main html file not found");
-      }
-      d.querySelectorAll("script").forEach((s)=>{
+      $ = cheerio.load(fs.readFileSync(indexFileLoc,"utf8"))
+      $("script").each((i,$el)=>{
+        let el = $($el);
+        let s = {
+          src: el.attr("src") || "",
+          type: el.attr("type"),
+          textContent: el.text(),
+        }
         let source = "";
         let loc = "";
         let type = s.type || path.extname(s.src).substring(1);
@@ -116,21 +117,19 @@ const buildClient = (dev = true)=>{
             source = s.textContent;
             loc = null;
           }
-          s.textContent = compile(type,loc,source);
-          s.removeAttribute("src");
-          s.removeAttribute("type");
+          el.text(compile(type,loc,source));
+          el.removeAttr("src");
+          el.removeAttr("type");
         }
       });
       if(dev){
-        let lr = d.createElement("script");
-        lr.src = `http://localhost:${ opts.port }/livereload.js`;
-        d.body.appendChild(lr);
+        $("body").append(`<script src="http://localhost:${ opts.port }/livereload.js"></script>`)
       }
-      cached[indexFileLoc] = d.documentElement.outerHTML;
+      cached[indexFileLoc] = $.html();
       console.log(chalk.green("build finished."));
     }
   }catch(e){
-    cached[indexFileLoc] = `<style>body{color:gray;background-color:black;}</style><body><pre>${e.stderr.toString("utf8")}</pre><script src="http://localhost:${ opts.port }/livereload.js"></script></body>`
+    cached[indexFileLoc] = `<style>body{color:gray;background-color:black;}</style><body><pre>${e.stderr?e.stderr.toString("utf8"): e }</pre><script src="http://localhost:${ opts.port }/livereload.js"></script></body>`
   }
   return cached[indexFileLoc];
 };
