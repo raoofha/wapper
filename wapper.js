@@ -3,7 +3,6 @@ var express = require("express");
 var { JSDOM } = require("jsdom");
 var fs = require("fs");
 var path = require("path");
-var lang = require("./lang");
 var chokidar = require('chokidar');
 const chalk = require('chalk');
 const tinylr = require("tiny-lr");
@@ -14,8 +13,12 @@ var opts = require('minimist')(process.argv.slice(2),{
   default:{
     port : 3000,
     input : "index.html",
+    output : ".stuff",
   }
 });
+
+global.opts = opts;
+var lang = require("./lang");
 
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
