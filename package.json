@@ -19,5 +19,6 @@
     "chokidar": "1.6.1",
     "express": "4.15.2",
     "tiny-lr": "1.0.4"
-  }
+  },
+  "preferGlobal": "true"
 }
