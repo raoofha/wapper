@@ -104,7 +104,7 @@ const buildClient = (dev = true)=>{
         let source = "";
         let loc = "";
         let type = s.type || path.extname(s.src).substring(1);
-        if(type){
+        if(lang[type]){
           if(s.src){
             let p = wd+"/"+s.src;
             if(fs.existsSync(p)){
