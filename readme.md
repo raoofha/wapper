@@ -17,9 +17,8 @@ open localhost:3000
 
 
 ### Supported filetypes
-* elm
-
-file an issue for your favorite language
+* elm : elm-make must be in your path
+* cljs : lumo must be in your path
 
 
 ### Examples
