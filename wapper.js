@@ -46,7 +46,7 @@ if (!fs.existsSync(indexFileLoc)){
   process.exit();
 }
 
-var watcher = chokidar.watch(indexParentLoc,{ ignored: [/(^|[\/\\])\./, /elm-stuff$/, /node_modules$/] })
+var watcher = chokidar.watch(indexParentLoc,{ ignored: [/(^|[\/\\])\./, /elm-stuff$/, /node_modules$/, /cljs-stuff$/] })
 var lastmtime = null;
 watcher.on("ready", ()=> {
   //console.log(chalk.green(`open http://localhost:${ opts.port }`));
@@ -117,9 +117,16 @@ const buildClient = (dev = true)=>{
             source = s.textContent;
             loc = null;
           }
-          el.text(compile(type,loc,source));
-          el.removeAttr("src");
-          el.removeAttr("type");
+          let compiledText = compile(type,loc,source);
+          if(s.type === "cljs"){
+            el.text("");
+            el.removeAttr("type");
+            el.attr("src", "cljs-stuff/out.js")
+          }else{
+            el.text(compiledText);
+            el.removeAttr("src");
+            el.removeAttr("type");
+          }
         }
       });
       if(dev){
