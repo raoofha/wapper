@@ -50,6 +50,25 @@ var app = Elm.Main.fullscreen();
 </html>
 ```
 
+```html
+<html>
+  <body>
+    <script type="cljs">
+(ns main) ; the namespace must be named main
+(js/document.write "hello world")
+    </script>
+  </body>
+</html>
+```
+
+```html
+<html>
+  <body>
+    <script src="example/core.cljs"></script>
+  </body>
+</html>
+```
+
 ### CLI
 ```
 --input  set input file or directory 
