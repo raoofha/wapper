@@ -1,6 +1,6 @@
 {
   "name": "wapper",
-  "version": "0.3.1",
+  "version": "0.3.3",
   "description": "develop with no/less config",
   "bin": {
     "wapper": "wapper.js"
@@ -22,5 +22,10 @@
     "mkdirp": "^0.5.1",
     "tiny-lr": "1.0.4"
   },
-  "preferGlobal": "true"
+  "preferGlobal": "true",
+  "keywords": [
+    "clojurescript",
+    "elm",
+    "livereload"
+  ]
 }
