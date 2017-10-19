@@ -121,7 +121,7 @@ const buildClient = (dev = true)=>{
           if(type === "cljs"){
             el.text("");
             el.removeAttr("type");
-            el.attr("src", "cljs-stuff/out.js")
+            el.attr("src", ".stuff/cljs/out.js")
           }else{
             el.text(compiledText);
             el.removeAttr("src");

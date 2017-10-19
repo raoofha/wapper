@@ -54,7 +54,7 @@ var app = Elm.Main.fullscreen();
 <html>
   <body>
     <script type="cljs">
-(ns main) ; the namespace must be named main
+(ns main.core) ; the namespace must be named main.core and require doesn't work
 (js/document.write "hello world")
     </script>
   </body>
@@ -64,7 +64,8 @@ var app = Elm.Main.fullscreen();
 ```html
 <html>
   <body>
-    <script src="example/core.cljs"></script>
+    <!-- src must begin with src -->
+    <script src="src/example/core.cljs"></script>
   </body>
 </html>
 ```
